@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Appointment</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     <style>
+       body {
+            height: 100vh;
+            background: #111;
+            color: white;
+        }
+
+        .cover-container {
+            max-width: 42em;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,.7);
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .btn-custom {
+            background: white;
+            color: black;
+        }
+
+        .btn-custom:hover {
+            background: #ddd;
+        }
+        
+    </style>
+</head>
+
+
+
+<div class="container py-5">
+
+    <h2 class="text-center mb-5">Create Appointment</h2>
+
+    <div class="row">
+
+        <!-- LEFT SIDE -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="card-title mb-4">Selected Service</h4>
+
+                    <p>
+                        <strong>Service:</strong><br>
+                        {{ service.name }}
+                    </p>
+
+                    <p>
+                        <strong>Price:</strong><br>
+                        {{ service.price }} lei
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-md-8">
+
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h4 class="mb-4">Appointment Details</h4>
+                    
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                {{ error }}
+                            </div>
+                        {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">First Name</label>
+                                <input type="text"
+                                       name="first_name"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Last Name</label>
+                                <input type="text"
+                                       name="last_name"
+                                       class="form-control"
+                                       required>
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Date</label>
+                            <input type="date"
+                                   name="date"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Hour</label>
+                            <input type="time"
+                                   name="hour"
+                                   class="form-control"
+                                   required>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary w-100">
+                            Confirm Appointment
+                        </button>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

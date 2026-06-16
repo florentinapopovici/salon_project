@@ -1,0 +1,74 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Salon Beauty</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+       body {
+            height: 100vh;
+            background: #111;
+            color: white;
+        }
+
+        .cover-container {
+            max-width: 42em;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,.7);
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .btn-custom {
+            background: white;
+            color: black;
+        }
+
+        .btn-custom:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body class="d-flex h-100 text-center text-white">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- NAVBAR -->
+    {% include "mainapp/navbar.html" %}
+
+    <!-- CONTENT -->
+    <main class="d-flex flex-column justify-content-center align-items-center text-center flex-grow-1">
+        <h1>Bun venit la Beauty Salon</h1>
+
+        <p class="lead">
+            Servicii profesionale de înfrumusețare, programări rapide și experiență premium.
+        </p>
+
+        <p class="lead">
+            <a href="/services" class="btn btn-lg btn-custom fw-bold">
+                Vezi serviciile
+            </a>
+        </p>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-auto text-white-50">
+        <p>© 2026 Beauty Salon by Florentina</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

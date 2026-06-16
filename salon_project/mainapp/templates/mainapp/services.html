@@ -1,0 +1,119 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Salon Beauty</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: #111;
+            color: white;
+        }
+
+        .cover-container {
+            max-width: 900px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,.7);
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        .btn-custom {
+            background: white;
+            color: black;
+        }
+
+        .btn-custom:hover {
+            background: #ddd;
+        }
+
+        .card {
+            background: #1c1c1c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body class="text-white">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+
+    <!-- NAVBAR -->
+    {% include "mainapp/navbar.html" %}
+
+    
+    <main class="mb-5 text-center">
+        <h1>Bun venit la Beauty Salon</h1>
+
+        <p class="lead">
+            Servicii profesionale de înfrumusețare și experiență premium.
+        </p>
+    </main>
+
+    <!-- SERVICES SECTION -->
+    <h3 class="mb-3">Serviciile noastre</h3>
+
+    <div class="row">
+
+        {% for service in services %}
+        <div class="col-md-4">
+            <div class="card mb-3 p-3">
+
+                <h5>{{ service.services }}</h5>
+
+                <p class="mb-1">
+                    {{ service.duration }} min
+                </p>
+
+                <p>
+                    {{ service.price }} lei
+                </p>
+
+                <button class="btn btn-sm btn-outline-light">
+                    <a href="{% url 'create_appointment' service.id %}">
+                        Programează-te
+                    </a>
+                </button>
+
+                <h6 class="mt-3">Recenzii:</h6>
+                {% for review in service.review_set.all %}
+                    <p>
+                        {{ review.rating }}/5 ⭐
+                        {{ review.comment }}
+                        - {{ review.user.username }}
+                    </p>
+                {% empty %}
+                    <p>Nu există recenzii.</p>
+                {% endfor %}
+
+                <a href="{% url 'add_review' service.id %}">
+                    Adaugă recenzie
+                </a>
+
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-4 text-center text-white-50">
+        © 2026 Beauty Salon
+    </footer>
+
+</div>
+
+</body>
+</html>
