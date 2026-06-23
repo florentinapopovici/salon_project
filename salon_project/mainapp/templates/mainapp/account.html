@@ -61,8 +61,8 @@
 
         <!-- USER INFO -->
         <div class="card mb-4 p-3">
-            <h5>Welcome, {{ user.username }} </h5>
-            <p class="text-secondary mb-0">{{ user.email }}</p>
+            <h5>Welcome, {{ request.user.username }} </h5>
+            <p class="text-secondary mb-0">{{ request.user.email }}</p>
         </div>
 
         <!-- APPOINTMENTS -->

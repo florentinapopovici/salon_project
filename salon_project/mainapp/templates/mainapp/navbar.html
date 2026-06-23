@@ -7,7 +7,7 @@
             <a class="nav-link d-inline px-2" href="/services">Services</a>
             <a class="nav-link d-inline px-2" href="/about">About</a>
 
-            {% if user.is_authenticated %}
+            {% if request.user.is_authenticated %}
                 <a class="nav-link d-inline px-2" href="/account">My Account</a>
                 <a class="nav-link d-inline px-2" href="/logout">Logout</a>
             {% else %}

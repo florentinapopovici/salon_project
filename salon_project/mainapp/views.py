@@ -70,16 +70,16 @@ def create_appointment(request , service_id):
         date = request.POST.get("date")
         hour = request.POST.get("hour")
 
-        appointments = Appointment.objects.create(
+        if Appointment.objects.filter(date=date , hour=hour).exists():
+            return render(request , 'mainapp/appointment.html' , {'service':service , 'error':'Acest interval orar este deja ocupat'})
+
+        Appointment.objects.create(
             user = request.user ,
             service = service , 
             date = date , 
             hour = hour , 
             status = "pending"
         )
-
-        if appointments :
-            return render(request , 'mainapp/appointment.html' , {'service' : service , 'error' : 'Acest interval orar este deja ocupat'})
 
         return redirect("services")
     
